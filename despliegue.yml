@@ -15,7 +15,7 @@ pipeline {
         stage('execute') {
             steps {
                 sh 'ls'
-                bat 'python app.py'
+                sh 'python app.py'
             }
         }
         stage('test') {
