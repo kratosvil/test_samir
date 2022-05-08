@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kratosvil/test_samir.git']]])
+            }
+        }
+        stage('build') {
+            steps {
+                git branch: 'main', url: 'https://github.com/kratosvil/test_samir.git'
+            }
+        }
+        stage('execute') {
+            steps {
+                sh 'ls'
+                sh 'python app.py'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'job has been test'
+            }
+        }
+    }
+}
