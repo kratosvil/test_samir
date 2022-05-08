@@ -1,17 +1,19 @@
 pipeline {
     agent any
-
+    // checkout repository
     stages {
         stage('checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kratosvil/test_samir.git']]])
             }
         }
+        //clone from repository
         stage('build') {
             steps {
                 git branch: 'main', url: 'https://github.com/kratosvil/test_samir.git'
             }
         }
+        // execute app and verify version
         stage('execute') {
             steps {
                 sh 'ls'
@@ -19,6 +21,7 @@ pipeline {
                 sh 'python3 app.py'
             }
         }
+        //test aplication
         stage('test') {
             steps {
                 echo 'job has been test'
