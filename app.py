@@ -1,1 +1,1 @@
-print "solaaaaaaaaaaaaaa"
+print ("solaaaaaaaaaaaaaa")
