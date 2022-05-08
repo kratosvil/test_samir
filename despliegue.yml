@@ -15,8 +15,8 @@ pipeline {
         stage('execute') {
             steps {
                 sh 'ls'
-                sh 'python --version'
-                sh 'python app.py'
+                sh 'python3 --version'
+                sh 'python3 app.py'
             }
         }
         stage('test') {
